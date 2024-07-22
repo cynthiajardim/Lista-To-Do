@@ -1,7 +1,11 @@
 <template>
     <div class="task-grid">
         <template v-if="tasks.length">
-            <UniqueTask v-for="task in tasks" :key="task.nome" :task="task"></UniqueTask>
+            <UniqueTask v-for="(task, i) in tasks" 
+            :key="task.nome" 
+            :task="task"
+            @taskDeleted="$emit('taskDeleted', i)"
+            @stateChange="$emit('stateChange', i)"></UniqueTask>
         </template>
         <p v-else>Nenhuma tarefa :)</p>
     </div>
