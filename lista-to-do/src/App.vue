@@ -1,10 +1,13 @@
 <template>
   <div id="app">
-   <h1>To Do: </h1>
-   <NewTask @taskAdded="addTask"></NewTask>
-   <TaskGrid :tasks="tasks" 
-   @taskDeleted="removeTask" 
-   @stateChange="changeState"></TaskGrid>
+    <div class="init">
+        <h1>To Do</h1>
+        <h2>{{dataHoje}}</h2>
+        <NewTask @taskAdded="addTask"></NewTask>
+    </div>
+    <TaskGrid :tasks="tasks" 
+    @taskDeleted="removeTask" 
+    @stateChange="changeState"></TaskGrid>
   </div>
 </template>
 
@@ -21,7 +24,8 @@ export default {
         {nome: 'Iniciar curso', pending: false},
         {nome: 'Arrumar casa', pending: true},
         {nome: 'Estudar para a prova', pending: false}
-      ]
+      ],
+      dataHoje:(new Date()).getDate()+'/'+((new Date()).getMonth()+1)
     }
   },
   watch: {
@@ -57,8 +61,34 @@ export default {
 
 <style>
   body {
-    background-color: #B0C4DE;
+    background: linear-gradient(0.90turn, #ffde59, #ff914d);  
   }
 
+  .init{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .init h1{
+    color: #ffd200;
+    text-shadow: -15px 5px 20px #ced0d3;
+    text-shadow: 5px 5px 0px #FF7154, 
+    10px 10px 0px #FF9253;
+    font-family: "Vampiro One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 134px;
+    margin: 0;
+  }
+
+  .init h2{
+    font-family: "BioRhyme Expanded", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 30px;
+    margin:0;
+  }
 
 </style>

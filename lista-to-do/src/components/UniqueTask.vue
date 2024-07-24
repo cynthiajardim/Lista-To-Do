@@ -1,7 +1,8 @@
 <template>
-    <div class="task" :class="stateClass" @click="$emit('stateChange', task)">
+    <div class="task" :class="stateClass">
         <!-- click.stop para o evento para que ele não propague o evento para a emissão da mudança de estado, do contrário teremos um problema -->
-        <span class="close" @click.stop="$emit('taskDeleted', task)">x</span>
+        <!-- <span class="close" @click.stop="$emit('taskDeleted', task)">x</span> -->
+        <input type="checkbox"  @click="$emit('stateChange', task)">
         <p>{{ task.nome }}</p>
     </div>
 </template>
@@ -23,6 +24,16 @@
 </script>
 
 <style>
+    .task{
+        display: flex;
+    }
+
+    .done{
+        text-decoration: line-through;
+    }
+</style>
+
+<!-- <style>
     .task{
         position: relative;
         box-sizing: 250px;
@@ -68,4 +79,4 @@
         display: flex;
         justify-content: center;
     }
-</style>
+</style> -->
